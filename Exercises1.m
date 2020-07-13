@@ -31,6 +31,7 @@ clc;clear;
 mat=[2 3 -1;4 4 -3;2 -3 1]; %SELA(A)
 B=[5 3 -1]';
 [m,n] = size(mat);
+[Bm,Bn] = size(B)
 numdet=1;
 fil=0;
 respdet=0;
@@ -93,14 +94,14 @@ Xn
 % respdet;
 
 
-%% factorization LU
+%% 3. factorization LU
 clc;clear;
-mat=[2 3 -1;4 4 -3;2 -3 1]; %SELA(A)
-B=[5 3 -1]';
+mat=[1 0 1;1 1 0; 0 1 1]; %SELA(A)
+B=[0 1 0]';
 [m,n] = size(mat);
 numdet=1;
 respdet=0;
-
+Xn=ones(1,m);
 if m~=n
    disp("Isn't squard matrix");
 else
@@ -127,7 +128,7 @@ else
         disp("Matrix with determinant zero");
     else        
         Nmat=mat;
-        disp("calculating Matrix..");
+        disp("calculating Matrix U and L..");
         NV=eye(m);
         for j=1:n-1
             for i=j+1:n
@@ -152,8 +153,7 @@ else
             end
             Yn(i)=(A+B(i))/NV(i,i);
             A=0;
-        end
-        Xn=ones(1,m);
+        end        
         for i=m:-1:1
             if i~=m
                 for j=i+1:m                    
@@ -162,13 +162,28 @@ else
             end
             Xn(i)=(A+Yn(i))/Nmat(i,i);
             A=0;
-        end
-        
+        end        
     end
+    % Solution
+    Xn
 end
 
 
-%%
+
+
+%% 4. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
