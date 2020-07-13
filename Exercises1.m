@@ -84,6 +84,9 @@ else
         end
     end
 end
+% Solution
+Xn
+
 
 % Compare
 % det(mat);
@@ -91,3 +94,9 @@ end
 
 
 %%
+
+
+
+
+
+
