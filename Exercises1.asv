@@ -61,6 +61,13 @@ else
         Nmat=[mat,B]
         disp("calculating Matrix..");
         for j=1:n-1
+%             With pivote
+            infF=j;
+            for i=j+1:n
+               if an 
+                
+            end
+
             for i=j+1:n
                 if Nmat(i,j)==0
                     continue;
@@ -97,7 +104,7 @@ Xn
 %% 3. factorization LU
 clc;clear;
 mat=[1 0 1;1 1 0; 0 1 1]; %SELA(A)
-B=[1 0 0]';
+B=[0 1 0]';
 [m,n] = size(mat);
 numdet=1;
 respdet=0;

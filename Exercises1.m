@@ -61,6 +61,19 @@ else
         Nmat=[mat,B]
         disp("calculating Matrix..");
         for j=1:n-1
+% With pivote
+            infF=j;
+            for i=j+1:n
+               if (abs(Nmat(i,j))>abs(Nmat(infF,j)))
+                   infF=i;
+               end                
+            end
+            if j~=infF
+                Vtemp=Nmat(j,:);
+                Nmat(j,:)=Nmat(infF,:);
+                Nmat(infF,:)=Vtemp;
+            end
+% solving
             for i=j+1:n
                 if Nmat(i,j)==0
                     continue;
