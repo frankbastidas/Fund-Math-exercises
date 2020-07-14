@@ -28,10 +28,9 @@ plot(xplt,yplt,'--rs',xRecurenca,yRecurencao,'-b',xfij,yfij,':g','LineWidth',2,.
 
 %% 2. Gaussian elimination Ax=B
 clc;clear;
-mat=[2 3 -1;4 4 -3;2 -3 1]; %SELA(A)
-B=[5 3 -1]';
+mat=[0.667 1.333 0.667;-0.667 0.667 0.333;-1.667 0.667 1.333]'; %SELA(A)
+B=[2 0 0]';
 [m,n] = size(mat);
-[Bm,Bn] = size(B)
 numdet=1;
 fil=0;
 respdet=0;
@@ -61,20 +60,22 @@ else
         Nmat=[mat,B]
         disp("calculating Matrix..");
         for j=1:n-1
-%             With pivote
+% With pivote
             infF=j;
             for i=j+1:n
-               if an 
-                
+               if (abs(Nmat(i,j))>abs(Nmat(infF,j)))
+                   infF=i;
+               end                
             end
-
+            if j~=infF
+                Vtemp=Nmat(j,:);
+                Nmat(j,:)=Nmat(infF,:);
+                Nmat(infF,:)=Vtemp;
+            end
+% solving
             for i=j+1:n
-                if Nmat(i,j)==0
-                    continue;
-                else
-                    NV=Nmat(i,j)/Nmat(j,j);
-                    Nmat(i,:)=Nmat(i,:)-NV*Nmat(j,:);
-                end               
+                NV=Nmat(i,j)/Nmat(j,j);
+                Nmat(i,:)=Nmat(i,:)-NV*Nmat(j,:);                    
             end
         end
         Nmat
@@ -103,8 +104,8 @@ Xn
 
 %% 3. factorization LU
 clc;clear;
-mat=[1 0 1;1 1 0; 0 1 1]; %SELA(A)
-B=[0 1 0]';
+mat=[1 2 2;-1 0 1;0 1 -2]; %SELA(A)
+B=[2 0 0]';
 [m,n] = size(mat);
 numdet=1;
 respdet=0;
